@@ -28,7 +28,7 @@ import ObjectiveC
 
 /**
  Toast is a Swift extension that adds toast notifications to the `UIView` object class.
- It is intended to be simple, lightweight, and easy to use. Most toast notifications 
+ It is intended to be simple, lightweight, and easy to use. Most toast notifications
  can be triggered with a single line of code.
  
  The `makeToast` methods create a new view and then display it as toast.
@@ -423,6 +423,8 @@ public extension UIView {
         
         let wrapperView = UIView()
         wrapperView.backgroundColor = style.backgroundColor
+        wrapperView.layer.borderWidth = style.borderWidth
+        wrapperView.layer.borderColor = style.borderColor.cgColor
         wrapperView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
         wrapperView.layer.cornerRadius = style.cornerRadius
         
@@ -560,6 +562,16 @@ public struct ToastStyle {
      The message color. Default is `.white`.
     */
     public var messageColor: UIColor = .white
+    
+    /**
+     The border color. Default is `.black`.
+    */
+    public var borderColor: UIColor = .black
+    
+    /**
+     The border width. Default is `0.0`.
+    */
+    public var borderWidth: CGFloat = 0.0
     
     /**
      A percentage value from 0.0 to 1.0, representing the maximum width of the toast
